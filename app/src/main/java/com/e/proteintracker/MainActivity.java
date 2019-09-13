@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -27,52 +27,49 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText myEditText = (EditText) findViewById(R.id.edittext1);
                 Log.d("ProteinTracker", myEditText.getText().toString());
+
+                Button helpBtn = (Button) findViewById(R.id.helpButton);
+                helpBtn.setOnClickListener(helpButtonListener);
+
+                if(savedInstanceState != null){
+                    Log.d("ProteinTracker",savedInstanceState.getString("abc")); }
             }
         });
+    }
 
-        private View.OnClickListener helpButtonListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
+    private View.OnClickListener helpButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
 
             Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+
             startActivity(intent);
         }
-        Button helpBtn = (Button)findViewById(R.id.helpButton);
-        helpBtn.setOnClickListener(helpButtonListener);
-    };
-}
 
-    @Override protected void onSaveInstanceState(Bundle outState)
-    {     super.onSaveInstanceState(outState);
+    };
+
+    @Override protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
         outState.putString("abc","test");
         super.onSaveInstanceState(outState);
-        if(savedInstanceState != null){
-            Log.d("ProteinTracker",savedInstanceState.getString("abc")); }
-    }
-    private View.OnClickListener helpButtonListener = new View.OnClickListener() {
+    };
 
-    @Override     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this,HelpActivity.class);
+    private View.OnClickListener getHelpButtonListener = new View.OnClickListener() {
 
-        Bundle b = new Bundle();
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, HelpActivity.class);
 
-        EditText myEditText = (EditText)findViewById(R.id.edittext1);
+            Bundle b = new Bundle();
 
-        b.putString("helpString",myEditText.getText().toString());
-        intent.putExtras(b);
+            EditText myEditText = (EditText) findViewById(R.id.edittext1);
 
-        startActivity(intent);
+            b.putString("helpString", myEditText.getText().toString());
 
-        TextView myTextView = new TextView(this);
+            intent.putExtras(b);
 
-        Bundle b = getIntent().getExtras();
-
-        String helpText = b.getString("helpString"); myTextView.setText(helpText); setContentView(myTextView);
-    } };
-  }
-
-
-
+            startActivity(intent);
+        }
+    }; }
 

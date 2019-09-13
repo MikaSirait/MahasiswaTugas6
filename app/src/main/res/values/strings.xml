@@ -2,4 +2,15 @@
     <string name="app_name">ProteinTracker</string>
     <string name="TestuntukupdateView">Test untuk update View</string>
     <string name="Test_untuk_update_View">Test_untuk_update_View</string>
+    <string name="activity">Activity</string>
+    <string name="mika">Mika</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment">FRAGMENT</string>
+    <string name="layout">Layout</string>
+    <string name="help">Help</string>
+    <string name="cindy_claudya">Cindy Claudya</string>
+    <string name="button">Button</string>
+    <string name="mainactivitytextview">mainActivityTextView</string>
 </resources>
